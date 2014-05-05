@@ -1,0 +1,16 @@
+/usr/share/ibus-googlepinyin/main.py
+/usr/share/ibus-googlepinyin/engine.py
+/usr/share/ibus-googlepinyin/factory.py
+/usr/share/ibus-googlepinyin/libopencc.py
+/usr/share/ibus-googlepinyin/googlepinyin.py
+/usr/share/ibus/component/googlepinyin.xml
+/usr/share/ibus-googlepinyin/icons/half-letter.svg
+/usr/share/ibus-googlepinyin/icons/full-punct.svg
+/usr/share/ibus-googlepinyin/icons/half-punct.svg
+/usr/share/ibus-googlepinyin/icons/ibus-pinyin.svg
+/usr/share/ibus-googlepinyin/icons/ibus-googlepinyin.png
+/usr/share/ibus-googlepinyin/icons/chinese.svg
+/usr/share/ibus-googlepinyin/icons/full-letter.svg
+/usr/share/ibus-googlepinyin/icons/trad-chinese.svg
+/usr/share/ibus-googlepinyin/icons/simp-chinese.svg
+/usr/share/ibus-googlepinyin/icons/english.svg

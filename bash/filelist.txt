@@ -1,0 +1,6 @@
+Param1: file1.txt
+Param2: file2.txt
+All param: file1.txt file2.txt file3.txt
+All param: file1.txt file2.txt file3.txt
+Flag: hB
+Last PID: 
