@@ -17,8 +17,18 @@ static struct work_struct vibe_work;
 
 static void vibe_work_func(struct work_struct *work)
 {
-    KER_PRINT("vibe_work_func:msleep(50)\n");
-    msleep(50);			/* CPU sleep */
+    int value = 2000;		/* Time out setting,2 seconds */
+    struct timespec uptime;
+
+    KER_PRINT("vibe_work_func:msleep(1000)\n");
+    msleep(1000);			/* CPU sleep */
+    hrtimer_start(&vibe_timer,
+		  ktime_set(value / 1000, (value % 1000) * 1000000),
+		  HRTIMER_MODE_REL);
+    do_posix_clock_monotonic_gettime(&uptime);
+    KER_PRINT("Time:%lu.%02lu\n",
+	      (unsigned long) uptime.tv_sec,
+	      (uptime.tv_nsec / (NSEC_PER_SEC / 100)));
 }
 
 static enum hrtimer_restart vibrator_timer_func(struct hrtimer *timer)
@@ -32,8 +42,8 @@ static enum hrtimer_restart vibrator_timer_func(struct hrtimer *timer)
 
     KER_PRINT("vibrator_timer_func\n");
     schedule_work(&vibe_work);
-    //return HRTIMER_NORESTART;
-    return HRTIMER_RESTART;
+    return HRTIMER_NORESTART;
+    //return HRTIMER_RESTART;
 }
 
 static int __init ker_driver_init(void)
@@ -62,6 +72,7 @@ static int __init ker_driver_init(void)
 static void __exit ker_driver_exit(void)
 {
     hrtimer_cancel(&vibe_timer);
+    KER_PRINT("ker_driver_exit\n");
 }
 
 module_init(ker_driver_init);
