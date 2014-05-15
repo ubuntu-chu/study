@@ -10,8 +10,13 @@
 # Normal rules
 #
 #
-.*
+#.*
 *.o
+*.swp.*
+*.ko.*
+*.swp
+*.ko
+*.swo
 *.o.*
 *.O
 *.O.*

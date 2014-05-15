@@ -1,0 +1,335 @@
+" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
+" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing debian.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages available in Debian.
+runtime! debian.vim
+
+" Uncomment the next line to make Vim more Vi-compatible
+" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
+" options, so any other options should be set AFTER setting 'compatible'.
+"set compatible
+
+" Vim5 and later versions support syntax highlighting. Uncommenting the
+" following enables syntax highlighting by default.
+"
+"快捷键列表
+"F1  源文件、头文件快速切换键     a.vim
+"F2  标签之间切换键	   mm定义、取消书签  visualmark.vim 
+"F3  搜索键                       grep.vim
+"F4  make clean
+"F5  make
+"F6  cp       前一个编辑错误
+"F7  cn       后一个编辑错误
+"F8  Tlist   
+"F9  \be
+"F10 :Project
+"F11 按下F10重新生成tag文件，并更新taglist
+"F12 
+"shift+3 在本文件内快速搜索
+"
+"
+"														Author: chuM
+if has("syntax")
+  syntax on
+endif
+
+if(has("win32") || has("win95") || has("win64") || has("win16")) "判定当前操作系统类型
+    let g:iswindows=1
+else
+	let g:iswindows=0
+endif
+
+""""""""""""""""""""""""""" 
+"  自动补全功能设置
+""""""""""""""""""""""""""" 
+filetype plugin indent on
+set completeopt=longest,menu
+let g:SuperTabRetainCompletionType=2
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+""""""""""""""""""""""""""" 
+"  代码折叠方式设置 
+""""""""""""""""""""""""""" 
+set foldmethod=marker
+
+""""""""""""""""""""""""""" 
+"  grep插件设置 在vim中实现类似grep的搜索功能 grep.vim
+"  搜索功能强大
+""""""""""""""""""""""""""" 
+nnoremap <silent> <F3> :Rgrep<CR>
+let Grep_Default_Filelist = '*.c *.cpp *.h *.hpp' 
+let Grep_Default_Options = '-i'
+
+""""""""""""""""""""""""""" 
+"  源文件 头文件切换插件 setting  a.vim
+""""""""""""""""""""""""""" 
+":A	在新Buffer中切换到c/h文件
+":AS		横向分割窗口并打开c/h文件
+":AV		纵向分割窗口并打开c/h文件
+":AT		新建一个标签页并打开c/h文件
+nnoremap <silent> <F1> :A<CR>
+
+""""""""""""""""""""""""""" 
+"  minibuffer  setting   minibuffer.vim
+""""""""""""""""""""""""""" 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+
+"map bn :bn<cr>
+"map bp :bp<cr>
+
+""""""""""""""""""""""""""" 
+"  quick copy past setting
+""""""""""""""""""""""""""" 
+"map nl o<esc>
+""""""""""""""""""""""""""" 
+"  quickfix  window setting
+""""""""""""""""""""""""""" 
+" 按下F4，执行make clean
+map <F4> :make clean<CR><CR><CR>
+" " 按下F5，执行make编译程序，并打开quickfix窗口，显示编译信息
+"map <F5> :make<CR><CR><CR> :copen<CR><CR>
+map <F5> :make<CR><CR><CR> 
+" " 按下F6，光标移到上一个错误所在的行
+map <F6> :cp<CR>
+" " 按下F7，光标移到下一个错误所在的行
+map <F7> :cn<CR>
+" " 以上的映射是使上面的快捷键在插入模式下也能用
+imap <F4> <ESC>:make clean<CR><CR><CR>
+imap <F5> <ESC>:make<CR><CR><CR> :copen<CR><CR>
+imap <F6> <ESC>:cp<CR>
+imap <F7> <ESC>:cn<CR>
+
+autocmd FileType c,cpp  map <buffer> <leader><space> :w<cr>:make<cr>
+"nmap <leader>cl :cl<cr>
+"nmap <leader>cn :cn<cr>
+"nmap <leader>cp :cp<cr>
+"使用此方式 在打开Taglist窗口时 quickfix窗口会自动显示在taglist窗口下面 很明显
+"nmap <leader>cw :cw 10<cr> 
+"映射后可以  不得需要按下F9键
+"nmap <F9> :TlistClose<cr>:cw 10<cr>:TlistOpen<cr><C-w>h<ESC>
+"此种方式不可以 原因未知
+"nmap <leader>cw :TlistClose<cr>:cw 10<cr>:TlistOpen<cr><C-w>h<ESC>
+
+""""""""""""""""""""""""""" 
+"  cscope  setting
+""""""""""""""""""""""""""" 
+if has("cscope") 
+	set csprg=/usr/bin/cscope 
+	set csto=0 
+	set cst 
+	set nocsverb 
+	set csverb 
+	set cscopetag 
+	set cscopequickfix=s-,g-,c-,d-,t-,e-,f-,i- 
+endif
+
+""""""""""""""""""""""""""" 
+"  Use mouse on console 
+""""""""""""""""""""""""""" 
+if has("wildmenu") 
+	set mouse =a 
+endif 
+" Set text-mode menu 
+if has("wildmenu") 
+" Use menu 
+	source $VIMRUNTIME/menu.vim 
+	set cpoptions-=< 
+	set wildcharm=<C-Z> 
+"	map <F4> :emenu <C-Z> 
+endif 
+
+"""""""""""""""""""""""""""""" 
+" Project project.vim
+"""""""""""""""""""""""""""""" 
+"project explore
+map \po :Project<CR>
+map <F10> :Project<CR>
+imap <F10> <ESC>:Project<CR>
+"file buffer explore 
+map \bo \be
+map <F9> \be
+imap <F9> <ESC>\be
+"header c file switch
+"note:如果使用了hjkl打头的快捷键 则在光标移动时 速度会受到影响 响应变慢
+"其他建也是如此 如果要使用快捷键 建议以不常用的键打头
+map \hc :A<CR>
+"make relative
+map \co :copen<CR>
+map \cc :cclose<CR>
+map \cn :cn<CR>
+map \cp :cp<CR>
+map \mk :make<CR>
+map \mc :make clean<CR>
+
+"""""""""""""""""""""""""""""" 
+" Tag list (ctags) 
+"""""""""""""""""""""""""""""" 
+nnoremap <silent> <F8> :TlistToggle<CR> 
+map tt :TlistToggle<CR>
+let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
+let Tlist_Show_One_File = 1 
+let Tlist_Exit_OnlyWindow = 1 
+let Tlist_Use_Left_Window = 0 
+let Tlist_Sort_Type = 'name' 
+let Tlist_Auto_Open = 0 
+let Tlist_Auto_Update = 1 
+let Tlist_WinWidth = 25 
+let Tlist_Use_Right_Window= 1 
+let Tlist_File_Fold_Auto_Close=1 
+let g:ctags_statusline=1            " 在状态栏显示函数名
+if $VIM_HATE_SPACE_ERRORS != '0' 
+"	let c_space_errors=1 
+endif 
+"" 按下F11重新生成tag文件，并更新taglist
+"add new tags file(由ctags生成tags的路径，在ctags -R 生成tags文件后，不要将tags移动到别的目录，否则ctrl+］时，会提示找不到源码文件)
+map <F11> :!ctags -R --exclude bin --exclude *.o --exclude .git --exclude .gitignore --exclude .ctags_cscope --c++-kinds=+p --fields=+ialS --extra=+q .<CR><CR>:!mv tags .ctags_cscope<CR><CR> :TlistUpdate<CR>
+"map <F11> :!ctags -R --exclude bin --exclude *.o --exclude .git --exclude .gitignore --exclude .ctags_cscope --c++-kinds=+p --fields=+ialS --extra=+q .<CR><CR> :TlistUpdate<CR>
+"imap 表示在插入模式下也可以映射、使用
+imap <F11> <ESC>:!ctags -R --exclude bin --exclude *.o --exclude .git --exclude .gitignore --exclude .ctags_cscope --c++-kinds=+p --fields=+ialS --extra=+q .<CR><CR> :TlistUpdate<CR>
+if filereadable("tags")
+	set tags=tags
+	if filereadable("./.ctags_cscope/usr_include/tags")
+		set tags+=./.ctags_cscope/usr_include/tags
+	endif
+endif
+
+"""""""""""""""""""""""""""""""" 
+" Window manager settings 
+"""""""""""""""""""""""""""""""" 
+"nmap wm :WMToggle<CR> 
+"注释：不使用wm的原因在于会使w的响应速度变慢 
+nmap \wm :WMToggle<CR> 
+map <c-w><c-f> :FirstExplorerWindow<cr> 
+map <c-w><c-b> :BottomExplorerWindow<cr> 
+let persistentBehaviour=0 
+let winManagerWidth=25 
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+
+" 光标所在行高亮颜色定义
+hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkred  ctermfg=white guibg=darkred guifg=white 
+"可以把darkred，white等换成你喜欢的颜色。其中guibg和guifg修改的是下划线的颜色；
+"ctermbg和ctermfg修改的是背景的颜色，可以删去，仅保留下划线。
+
+" If using a dark background within the editing area and syntax highlighting
+" turn on this option as well
+"set background=dark
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+"if has("autocmd")
+"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"endif
+
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+"if has("autocmd")
+"  filetype plugin indent on
+"endif
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+set showcmd		" Show (partial) command in status line.
+set showmatch		" Show matching brackets.
+"set ignorecase		" Do case insensitive matching
+set smartcase		" Do smart case matching
+set autowrite		" Automatically save before commands like :next and :make
+set hidden             " Hide buffers when they are abandoned
+set mouse=a		" Enable mouse usage (all modes)
+set showcmd
+set nu
+set cursorline
+set hlsearch            "收索的结果高亮
+set incsearch			"在输入要搜索的文字时，vim会实时匹配
+
+"autoindent 就是自动缩进的意思，当你在输入状态用回车键插入一个新行，
+"或者在 normal 状态用 o 或者 O 插入一个新行时，autoindent 会自动地将当前行的缩进拷贝到新行，
+"也就是"自动对齐”，当然了，如果你在新行没有输入任何字符，那么这个缩进将自动删除。
+
+"cindent 就不同了，它会按照 C 语言的语法，自动地调整缩进的长度，
+"比如，当你输入了半条语句然后回车时，缩进会自动增加一个 TABSTOP 值，
+"当你键入了一个右花括号时，会自动减少一个 TABSTOP 值。
+set cindent             "自动缩进相关设置选项
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set autoindent
+set nocompatible "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
+set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
+"Turn on WiLd menu
+set wildmenu
+"Always show current position
+"set rule
+""Bbackspace and cursor keys wrap to
+set whichwrap+=<,>,h,l
+"Set magic on
+set magic
+
+""""""""""""""""""""""""""""""
+" => Statusline
+" """"""""""""""""""""""""""""""
+" "Format the statusline
+" " Nice statusbar
+" set laststatus=2
+" set statusline=
+" set statusline+=%2*%-3.3n%0*/ " buffer number
+" set statusline+=%f/ " file name
+" set statusline+=%h%1*%m%r%w%0* " flag
+" set statusline+=[
+" if v:version >= 600
+" set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
+" set statusline+=%{&encoding}, " encoding
+" endif
+" set statusline+=%{&fileformat}] " file format
+" if filereadable(expand("$VIM/vimfiles/plugin/vimbuddy.vim"))
+" set statusline+=/ %{VimBuddy()} " vim buddy
+" endif
+" set statusline+=%= " right align
+" set statusline+=%2*0x%-8B/ " current char
+" set statusline+=%-14.(%l,%c%V%)/ %<%P " offset
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%04.8b]\ [HEX=\%04.4B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+"状态栏设置有些问题 
+"set statusline=%F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L
+
+" Nice window title
+ if has('title') && (has('gui_running') || &title)
+ set titlestring=
+ set titlestring+=%f/ " file name
+ set titlestring+=%h%m%r%w " flag
+ set titlestring+=/ -/ %{v:progname} " program name
+ endif
+ 
+" 用空格键来开关折叠
+set foldenable
+set foldmethod=manual
+nnoremap  @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') 
+ "--状态行设置--
+set laststatus=2 " "总显示最后一个窗口的状态行；设为1则窗口数多于一个的时候显示最后一个窗口的状态行；0不显示最后一个窗口的状态行
+ set ruler          "标尺，用于显示光标位置的行号和列号，逗号分隔。每个窗口都有自己的标尺。如果窗口有状态行，标尺在那里显示。否则，它显示在屏幕的最后一行上。
+ "
+ ""--命令行设置--
+ set showcmd            " 命令行显示输入的命令
+ set showmode        " 命令行显示vim当前模式
+ " 设置当文件被改动时自动载入
+ set autoread
+ " 显示行号
+ set number
+"自动保存
+"set autowrite
+
+" Source a global configuration file if available
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
+
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
