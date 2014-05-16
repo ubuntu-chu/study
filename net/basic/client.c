@@ -18,10 +18,11 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <netinet/in.h>
+#include <sys/socket.h>
 
 #define SER_PORT 9877   
 #define WAIT_COUNT 5 
-#define SER_IP "127.0.0.1" 
+#define SER_IP "192.168.1.129" 
 
 int main(int argc, char** argv)  
 {  
@@ -46,6 +47,9 @@ int main(int argc, char** argv)
     }  
     char pcContent[5000]={0};
 	int rt;
+
+	printf("send data to server\n");
+    write(send_sk,pcContent,1000);
 	/*
     char pcContent[5000]={0};
     write(send_sk,pcContent,5000);
@@ -61,6 +65,7 @@ int main(int argc, char** argv)
     write(send_sk,pcContent,5000);
     sleep(1);
 	*/
+#if 0
 	if ((rt = read(send_sk,pcContent,4000)) <= 0){
 		printf("rt = %d\n", rt);
 		perror("read");
@@ -78,7 +83,11 @@ int main(int argc, char** argv)
 	for (rt = 0; rt < 96; rt++){
 		printf("pcContent[%d] = %d\n", rt, pcContent[rt]);
 	}
+#endif
 
    // sleep(1000);
-    close(send_sk);
+  //  close(send_sk);
+	//shutdown(send_sk, SHUT_RDWR);
+	shutdown(send_sk, SHUT_RD);
+    sleep(10);
 }

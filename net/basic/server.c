@@ -55,22 +55,39 @@ int main(int argc, char** argv)
 			int m = 1;
             close(listen_fd);  
             char pcContent[4096];
-			printf("prepare to write\n");
-			sleep(10);
 			for (rt = 4001; rt < 4096; rt++){
 				pcContent[rt]    = m++;
 			}
+#if 0
             if ((rt = write(real_fd,pcContent,4096)) <= 0){
 				printf("rt = %d\n", rt);
 				perror("write");
 			}
 				printf("write rt = %d\n", rt);
+#endif
 			printf("prepare to read\n");
-            if ((rt = read(real_fd,pcContent,4096)) <= 0){
-				printf("rt = %d\n", rt);
+		while (1){
+            rt = read(real_fd,pcContent,4096); 
+			printf("read rt = %d\n", rt);
+            if (rt == 0){
+				printf("client normal exit\n");
 				perror("read");
+				sleep(2);
+				rt = write(real_fd,pcContent,4096); 
+				printf("write rt = %d\n", rt);
+				if (rt < 0){
+					perror("write");
+				}
+				break;
+			}else if (rt < 0){
+				printf("client abnormal exit\n");
+				perror("read");
+				break;
 			}
+		}
+		sleep(10);
             close(real_fd);  
+
 			printf("child process quit\n");
             exit(0);              
         }  
