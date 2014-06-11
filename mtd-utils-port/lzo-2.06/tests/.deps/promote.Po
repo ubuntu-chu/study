@@ -1,0 +1,49 @@
+tests/promote.o: tests/promote.c \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stddef.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stdarg.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stddef.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stdarg.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h:

@@ -1,0 +1,261 @@
+tests/align.o: tests/align.c include/lzo/lzoconf.h config.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/limits.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/syslimits.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/limits.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix1_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/local_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/limits.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix2_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stddef.h \
+ include/lzo/lzodefs.h examples/portab.h examples/portab_a.h \
+ src/miniacc.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stdarg.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/types.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/time.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/endian.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/endian.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/byteswap.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/select.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/select.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigset.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/time.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/sysmacros.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/stat.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stat.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/waitflags.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/waitstatus.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/alloca.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/string.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/xlocale.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string2.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/strings.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/inttypes.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stdint.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdint.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wchar.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/unistd.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix_opt.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/environments.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/confname.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/getopt.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/ctype.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/errno.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/errno.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/errno.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/errno.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno-base.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/malloc.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/fcntl.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/fcntl.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/dirent.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/dirent.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/setjmp.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/setjmp.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/signal.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/signum.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/siginfo.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigaction.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigcontext.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/sigcontext.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigstack.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/ucontext.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/procfs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/time.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/user.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigthread.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/utime.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/assert.h
+
+include/lzo/lzoconf.h:
+
+config.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/limits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/syslimits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/limits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix1_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/local_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/limits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix2_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stddef.h:
+
+include/lzo/lzodefs.h:
+
+examples/portab.h:
+
+examples/portab_a.h:
+
+src/miniacc.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stdarg.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/types.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/time.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/endian.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/endian.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/byteswap.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/select.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/select.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigset.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/time.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/sysmacros.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/stat.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stat.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/waitflags.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/waitstatus.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/alloca.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/string.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/xlocale.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string2.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/strings.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/inttypes.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stdint.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdint.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wchar.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/unistd.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix_opt.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/environments.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/confname.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/getopt.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/ctype.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/errno.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/errno.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/errno.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/errno.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno-base.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/malloc.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/fcntl.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/fcntl.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/dirent.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/dirent.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/setjmp.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/setjmp.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/signal.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/signum.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/siginfo.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigaction.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigcontext.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/sigcontext.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigstack.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/ucontext.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/procfs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/time.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/user.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigthread.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/utime.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/assert.h:

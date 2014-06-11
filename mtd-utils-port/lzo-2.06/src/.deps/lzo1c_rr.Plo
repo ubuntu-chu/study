@@ -1,0 +1,89 @@
+src/lzo1c_rr.lo: src/lzo1c_rr.c src/config1c.h src/lzo_conf.h \
+ include/lzo/lzoconf.h config.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/limits.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/syslimits.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/limits.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix1_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/local_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/limits.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix2_lim.h \
+ /opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stddef.h \
+ include/lzo/lzodefs.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/string.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/xlocale.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string2.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h \
+ src/miniacc.h \
+ /opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/assert.h \
+ src/lzo_ptr.h include/lzo/lzo1c.h src/lzo1b_de.h src/stats1c.h \
+ src/stats1b.h src/lzo1c_cc.h src/lzo1b_r.ch
+
+src/config1c.h:
+
+src/lzo_conf.h:
+
+include/lzo/lzoconf.h:
+
+config.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/limits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include-fixed/syslimits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/limits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix1_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/local_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/limits.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix2_lim.h:
+
+/opt/codesourcery/arm-2011.09/bin/../lib/gcc/arm-none-linux-gnueabi/4.6.1/include/stddef.h:
+
+include/lzo/lzodefs.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/string.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/xlocale.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/string2.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h:
+
+src/miniacc.h:
+
+/opt/codesourcery/arm-2011.09/bin/../arm-none-linux-gnueabi/libc/usr/include/assert.h:
+
+src/lzo_ptr.h:
+
+include/lzo/lzo1c.h:
+
+src/lzo1b_de.h:
+
+src/stats1c.h:
+
+src/stats1b.h:
+
+src/lzo1c_cc.h:
+
+src/lzo1b_r.ch:

@@ -12,33 +12,33 @@ namespace {
     __thread int x = 0;
 }
 
-void print()
+void print(const char *hint)
 {
-    printf("pid=%d tid=%d x=%d\n", getpid(), ::syscall(SYS_gettid),
+    printf("%s pid=%d tid=%d x=%d\n", hint, getpid(), ::syscall(SYS_gettid),
 	   x);
 }
 int main() {
     printf("parent %d\n", getpid());
-    print();
+    print("parent");
     x = 1;
-    print();
+    print("parent");
     pid_t p = fork();
 
     if (p == 0) {
 	printf("chlid %d\n", getpid());
 	// child
-	print();
+	print("chlid");
 	x = 2;
-	print();
+	print("chlid");
 
 	if (fork() == 0) {
 	    printf("grandchlid %d\n", getpid());
-	    print();
+	    print("grandchild");
 	    x = 3;
-	    print();
+	    print("grandchild");
 	}
     } else {
 	// parent
-	print();
+	print("parent");
     }
 }

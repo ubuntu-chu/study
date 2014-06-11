@@ -28,10 +28,10 @@ class demo			//定义类demo
 
 void fuc1()			//定义函数
 {
-    expt e;			//声明expt类的对象
+//    expt e;			//声明expt类的对象
     int s = 0;
     demo d;			//声明demo类的对象
-    throw e;			//抛出异常
+    throw expt();			//抛出异常
 }
 
 void fuc2()
