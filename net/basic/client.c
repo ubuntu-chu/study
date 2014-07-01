@@ -20,13 +20,14 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 
-#define SER_PORT 9877   
+#define SER_PORT 6802   
 #define WAIT_COUNT 5 
-#define SER_IP "192.168.1.129" 
+#define SER_IP "192.168.120.28" 
 
 int main(int argc, char** argv)  
 {  
     int send_sk;  
+	char port_str[100];
     struct sockaddr_in s_addr;  
     socklen_t len = sizeof(s_addr);  
     send_sk = socket(AF_INET, SOCK_STREAM, 0);  
@@ -40,6 +41,9 @@ int main(int argc, char** argv)
 
     inet_pton(AF_INET,SER_IP,&s_addr.sin_addr);  
     s_addr.sin_port = htons(SER_PORT);  
+	printf("server ip: %s\n", SER_IP);
+	sprintf(port_str, "%d\n", SER_PORT);
+	printf("server ip: %s\n", port_str);
     if(connect(send_sk,(struct sockaddr*)&s_addr,len) == -1)  
     {  
         perror("connect fail  ");  
@@ -49,7 +53,7 @@ int main(int argc, char** argv)
 	int rt;
 
 	printf("send data to server\n");
-    write(send_sk,pcContent,1000);
+    //write(send_sk,pcContent,1000);
 	/*
     char pcContent[5000]={0};
     write(send_sk,pcContent,5000);
