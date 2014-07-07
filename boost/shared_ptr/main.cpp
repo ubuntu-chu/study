@@ -30,7 +30,7 @@ class Foo
  * */
 int main()
 {
-	vector<tr1::shared_ptr<Foo>> vec;
+	vector<tr1::shared_ptr<Foo> > vec;
 	std::tr1::shared_ptr<Foo> sp1(new Foo);
 	sp1->print();
 	std::cout << "sp1 pointer: " << sp1.get() << std::endl;
@@ -43,9 +43,18 @@ int main()
 	std::cout << "sp2 pointer: " << sp2.get() << std::endl;
 	std::cout << "counter sp1: " << sp1.use_count() << std::endl;
 	std::cout << "counter sp2: " << sp2.use_count() << std::endl;
+	sp2.reset();
+	std::cout << "after reset counter sp2: " << sp2.use_count() << std::endl;
+	std::cout << "sp2 pointer: " << sp2.get() << std::endl;
+	std::cout << "counter sp1: " << sp1.use_count() << std::endl;
 	}
 
+	std::cout << "counter vec[0]: " << vec[0].use_count() << std::endl;
 	std::cout << "counter sp1: " << sp1.use_count() << std::endl;
+	sp1.reset();
+	std::cout << "after reset counter sp1: " << sp1.use_count() << std::endl;
+	std::cout << "sp1 pointer: " << sp1.get() << std::endl;
+	std::cout << "counter vec[0]: " << vec[0].use_count() << std::endl;
 
 	return 0;
 }
