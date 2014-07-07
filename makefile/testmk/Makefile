@@ -66,11 +66,15 @@ PROGRAMSLIBS = $(strip lib$(PROGRAM).so)
 
 # 判断相应目录是否存在 若不存在则建立目录
 $(shell if ! [ -d $(OBJDIR) ] ; then \
-		mkdir $(OBJDIR) ; fi)
+	mkdir $(OBJDIR) ; fi)
 $(shell if ! [ -d $(PROGRAMDIR) ] ; then \
-		mkdir $(PROGRAMDIR) ; fi)
+	mkdir $(PROGRAMDIR) ; fi)
 $(shell if ! [ -d $(LIBDIR) ] ; then \
-		mkdir $(LIBDIR) ; fi)
+	mkdir $(LIBDIR) ; fi)
+$(shell if ! [ -d $(INCLUDEDIR) ] ; then \
+	mkdir $(INCLUDEDIR) ; fi)
+$(shell if ! [ -d $(SRCDIR) ] ; then \
+	mkdir $(SRCDIR) ; fi)
 
 ## Implicit Section: change the following only when necessary.
 ##==========================================================================
