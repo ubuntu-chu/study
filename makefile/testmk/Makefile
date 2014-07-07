@@ -63,18 +63,19 @@ PROGRAMDIR   = $(strip $(PROGRAM_DIR))
 PROGRAM      = $(strip $(PROGRAM_NAME))
 PROGRAMLIBS  = $(strip lib$(PROGRAM).a)
 PROGRAMSLIBS = $(strip lib$(PROGRAM).so)
+PROGRAM_PATH = $(strip $(PROGRAMDIR)/$(PROGRAM))
 
 # 判断相应目录是否存在 若不存在则建立目录
 $(shell if ! [ -d $(OBJDIR) ] ; then \
-	mkdir $(OBJDIR) ; fi)
+		mkdir $(OBJDIR) ; fi)
 $(shell if ! [ -d $(PROGRAMDIR) ] ; then \
-	mkdir $(PROGRAMDIR) ; fi)
+		mkdir $(PROGRAMDIR) ; fi)
 $(shell if ! [ -d $(LIBDIR) ] ; then \
-	mkdir $(LIBDIR) ; fi)
+		mkdir $(LIBDIR) ; fi)
 $(shell if ! [ -d $(INCLUDEDIR) ] ; then \
-	mkdir $(INCLUDEDIR) ; fi)
+		mkdir $(INCLUDEDIR) ; fi)
 $(shell if ! [ -d $(SRCDIR) ] ; then \
-	mkdir $(SRCDIR) ; fi)
+		mkdir $(SRCDIR) ; fi)
 
 ## Implicit Section: change the following only when necessary.
 ##==========================================================================
@@ -133,19 +134,16 @@ ifeq ($(PROGRAM),)
         PROGRAM = a.out
     endif
 endif
-ifeq ($(SRCDIRS),)
-    SRCDIRS = .
-endif
 
 #FILE' INFOMATION COLLECT
 #找到srcdir下的所有子目录
 VPATH 			= $(shell ls -AxR $(SRCDIR)|grep ":"|grep -v "\.svn"|tr -d ':')
 SOURCEDIRS	= $(VPATH)
 ##找出所有的头文件
-HEADERS = $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)/*,$(HDREXTS))))
+HEADERS = $(foreach d,$(SOURCEDIRS),$(wildcard $(addprefix $(d)/*,$(HDREXTS))))
 #search source file in the current dir
-SOURCES  	= $(foreach subdir,$(SOURCEDIRS),$(wildcard $(subdir)/*.c))
-SRCOBJS 	= $(patsubst %.c,%.o,$(SOURCES))
+SOURCES 	= $(foreach d,$(SOURCEDIRS),$(wildcard $(addprefix $(d)/*,$(SRCEXTS))))
+SRCOBJS    	= $(addsuffix .o, $(basename $(SOURCES)))  
 OBJS   		= $(subst $(SRCDIR),$(OBJDIR),$(SRCOBJS))
 ##DEPS为所有源文件对应的依赖文件 .d文件
 DEPS    	= $(OBJS:.o=.d)
@@ -154,7 +152,7 @@ DEPS    	= $(OBJS:.o=.d)
 SRC_CXX = $(filter-out %.c,$(SOURCES))
 
 
-.PHONY: all objs tags ctags clean distclean help show
+.PHONY: all objs tags ctags clean distclean help show exec
 
 # Delete the default suffixes
 .SUFFIXES:
@@ -223,6 +221,9 @@ distclean: clean
 	$(RM) -r $(OBJDIR) 
 #	$(FIND) $(OBJDIR) -name "*.o" -o -name "*.d" | $(XARGS) $(RM) -f
 
+exec:
+	./$(PROGRAM_PATH)
+
 # Show help.
 help:
 	@echo 'Generic Makefile for C/C++ Programs (gcmakefile) version 0.5'
@@ -239,15 +240,17 @@ help:
 	@echo '  distclean clean objects, the executable and dependencies.'
 	@echo '  show      show variables (for debug use only).'
 	@echo '  help      print this message.'
+	@echo '  exec      exec the program
 	@echo
 
 # Show variables (for debug use only.)
 show:
-	@echo 'PROGRAM DIR    :' $(PROGRAM_DIR)
+	@echo 'PROGRAM_DIR    :' $(PROGRAM_DIR)
 	@echo 'PROGRAM        :' $(PROGRAM)
+	@echo 'PROGRAM_PATH   :' $(PROGRAM_PATH)
 	@echo 'PROGRAMLIBS    :' $(PROGRAMLIBS)
 	@echo 'PROGRAMSLIBS   :' $(PROGRAMSLIBS)
-	@echo 'SRCDIRS        :' $(SRCDIRS)
+	@echo 'SOURCEDIRS     :' $(SOURCEDIRS)
 	@echo 'HEADERS        :' $(HEADERS)
 	@echo 'SOURCES        :' $(SOURCES)
 	@echo 'SRC_CXX        :' $(SRC_CXX)
