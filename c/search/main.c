@@ -88,13 +88,18 @@ int pop_sort(int *array, int len){
 	int tmp;
 	int j, i;
 	int pos	= len;
+	bool   is_switch  = true;
 
 	for (; pos > 0; pos--){
-		for (j = 0; j < pos - 1; j++){
-			if (array[j] > array[j+1]){
-				tmp		= array[j+1];
-				array[j+1] = array[j];
-				array[j] = tmp;
+		if (is_switch){
+			is_switch					= false;
+			for (j = 0; j < pos - 1; j++){
+				if (array[j] > array[j+1]){
+					tmp		= array[j+1];
+					array[j+1] = array[j];
+					array[j] = tmp;
+					is_switch			= ture;
+				}
 			}
 		}
 
