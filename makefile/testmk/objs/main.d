@@ -13,4 +13,5 @@
  /usr/lib/gcc/i686-linux-gnu/4.6/include/stdarg.h \
  /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
- /home/barnard/repository_study/makefile/testmk/include/hello.h
+ /home/barnard/repository_study/makefile/testmk/include/hello.h \
+ /home/barnard/repository_study/makefile/testmk/src/main.h
