@@ -1,0 +1,275 @@
+在GIT DIFF时使用VIMDIFF
+
+git 配置
+
+在shell中输入以下命令修改git配置，启用vimdiff。
+
+git config --global diff.tool vimdiff  
+git config --global difftool.prompt No
+之后使用下面命令就可以通过vimdiff来查看diff，跟以前略有不同。
+
+git difftool
+vimdiff配色方案
+
+如果vimdiff中默认配色看不清楚差异，推荐使用peaksea配色方案，下载后放到~/.vim/colors/目录下。修改~/.vimrc选择配色方案。
+
+if ! has("gui_running")  
+    set t_Co=256  
+endif  
+if &diff  
+	colors peaksea  
+endif
+
+################
+http://www.vim.org/scripts/script.php?script_id=760
+install details
+put the peaksea.vim in your $HOME/.vim/colors/ (or %HOME%\vimfiles\colors for Windows) 
+
+	To enable the scheme, you can put in ~/.vimrc the following: 
+
+	if ! has("gui_running") 
+	    set t_Co=256 
+		endif 
+		" feel free to choose :set background=light for a different style 
+		set background=dark 
+		colors peaksea 
+		
+		The newest version of most modern terminal emulators have 256 color support, the following has been tested: 
+		works great: xterm, konsole 4.2+, gnome-terminal, xfce4-terminal, putty for windows, mintty for cygwin and mintty for mingw/msys 
+		works after some tweaks: screen (recompile and add a .screenrc, google for details.), konsole 3.x (I had provided a patch at https://bugs.kde.org/show_bug.cgi?id=169013) 
+		works with issue: rxvt (no 256-color by default, needs hack for 256-color support) 
+	
+	In case you cannot make 256-color work for your terminal, the 16-color support has no difference from the ps_color.vim, you'll need to tune color codes for 16-color to work, the instructions can be found inside the old ps_color.vim. There are predefined konsole and xfce4-terminal profile at http://code.google.com/p/peaksea/source/browse/trunk 
+	
+	Note: if you don't like the dark-black background and want it be pure black: simply search for the following line 
+	hi Normal guifg=#d0d0d0 guibg=#202020 gui=NONE 
+	and change #202020 into #000000. 
+###########################"
+
+Keyboard Shortcuts:
+
+do - Get changes from other window into the current window.
+
+dp - Put the changes from current window into the other window.
+
+]c - Jump to the next change.
+
+[c - Jump to the previous change.
+
+zo 打开折叠代码
+zc （关闭）折叠代码
+
+Ctrl W + Ctrl W - Switch to the other split window.
+
+Update: Allan commented these two tips that I personally use quite often.
+
+If you load up two files in splits (:vs or :sp), you can do :diffthis on each window and achieve a diff of files that were already loaded in buffers
+:diffoff can be used to turn off the diff mode. 
+Posted 28th August 2008 by Amjith Ramanujam
+Labels: vim
+    
+35  View comments
+
+Casey12:01 PM
+Thanks, I've been looking everywhere for this.
+
+Reply
+
+mkoga6:43 PM
+Very cool, thanks for the tip!
+
+Reply
+
+yungchin10:29 AM
+Thanks! Just what I was looking for.
+
+Reply
+
+Partha Chatterjee3:01 AM
+Thanks a lot! I was looking around for these commands frantically. Its a great help. Thanks.
+
+Reply
+
+angel1:38 AM
+thanks a loads.... :) Jai ho!!
+
+Reply
+
+Alan Haggai Alavi4:06 AM
+Hi,
+	
+	Nice information. However, `Ctrl W + Ctrl W' is not required to switch windows. Ctrl W + W is enough to cycle windows. You can try Ctrl W + <any of the direction keys> to switch among windows in vimdiff or in vim with split windows.
+	
+	For example:
+	Ctrl W + L => Switch to the right window, which is similar to pressing Ctrl W + <Right arrow>.
+	
+	Regards.
+	
+	Reply
+	
+	Saggi Malachi9:06 AM
+	Great quick tutorial. 
+	Exactly what I was looking for.
+	
+	Reply
+	
+	Anonymous4:56 PM
+	Thanks for the great tip
+	
+	Reply
+	
+	peerlessdeepak6:27 AM
+	Nice one! I learnt vimdiff from it.
+	
+	while(As long as i remember vimdiff)
+	Thanks
+	
+	Reply
+	
+	Anonymous8:15 AM
+	To ignore whitespace use this command: set diffopt+=iwhite
+	
+	To turn that back off use: set diffopt-=iwhite
+	
+	Reply
+	
+	bothie6:36 AM
+	The only thing missing in this tutorial: How can I undo a dp/do command?
+	
+	Reply
+	Replies
+	
+	Divye Kapoor1:23 PM
+	+1 if you have a tip here.
+	
+	
+	Julio Angulo12:03 PM
+	just type u
+	
+	
+	Anonymous12:03 PM
+	After typing 'u', type ':e %' to get the coloring back.
+	
+	
+	Vibhav Sinha9:29 PM
+	:e % is opening the file again, isn't it better to use :diffupdate. It will conserve the undo/redo history.
+	
+	Reply
+	
+	~rAGU1:38 PM
+	do command is bit tricky. Esc and then type do placing the cursor at the beginning of the diff and place cursor at the end then type do again to bring the change from the other window.
+	+ can be expanded by pressing -> key to see text where there is no diff. Asusual :x saves and exits.
+	
+	Reply
+	
+	Martin4:10 AM
+	Hi, this is nice, but I had to figure out how to get it into diff mode in first place. Might be nice, if you could add that here.
+	
+	And somehow it is not very clever, I have two lines, both starting off the same and then ending in differntly. Still, it tells me the whole line in red color, like it were different.
+	
+	Reply
+	
+	Anonymous11:38 AM
+	@bothie: just do 'u' in the affected window to undo the editing command, as usual in vim
+	
+	Reply
+	
+	Deepak12:42 AM
+	This tip is very useful.. I started using vimdiff and enjoying.
+	
+	Reply
+	
+	Allan2:14 PM
+	Yet another tip to help people out... if you load up two files in splits (:vs or :sp), you can do :diffthis on each window and achieve a diff of files that were already loaded in buffers. I usually end up doing it this way because I already have the two versions loaded side by side.
+	
+	Another tip to quit diffing a split is to use :diffoff. I remember this one by telling diff to f-off. :P
+	
+	Reply
+	Replies
+	
+	Anonymous4:01 AM
+	You can even just say :windo diffthis in one of the split, and it will apply to all splits in that window :)
+	
+	Reply
+	
+	Amjith2:22 PM
+	Thanks Allan:
+	I've updated the post to reflect your tips. :)
+	
+	Reply
+	
+	shb2:31 PM
+	I was just looking for it! :)
+	
+	After a minute I also needed :diffupdate
+	
+	Reply
+	
+	Ondřej Jakubov6:35 AM
+	Nice one, very quick:)
+	
+	Reply
+	
+	Justin Hopper1:26 PM
+	Thank man - very useful commands
+	
+	Reply
+	
+	palak pal10:53 AM
+	Vim tutorial Cheat Sheet , Learn VIM in 5 miunute
+	https://www.youtube.com/watch?v=7BDh4bDqG8Y
+	
+	Reply
+	
+	zebra0mussel9:15 AM
+	zm: make folds
+	zr: remove folds
+	
+	Reply
+	
+	Anonymous2:39 PM
+	Now how about git conflicts? which require 3 files? dp and do do not work. What happens if the formatting and coloring go bonkers? 
+	
+	Missing quite a bit for it to be a useful tutorial in all honesty
+	
+	Reply
+	
+	Anonymous6:12 PM
+	I dont like the folded lines....the zR command unfolds everything, but that is a pain to do every time I open the editor...what is the command line options to do this? I've read about command line option "set nofen" but that either doesnt work on Mac OSX, or, Ive messed up something by trying to combine it with the ignore-whitespace command line option mentioned in an earlier comment to this blog post.
+	e.g. vimdiff -R -c 'set nofoldenable diffopt+=iwhite' filea fileb filec filed
+	does everything ok except lines are still folded until I interactively do zR command.
+	
+	Reply
+	
+	Damien Ferey7:52 AM
+	:qa to quit all
+	:qa! to quit all without saving
+	:wqa save and quit all
+	
+	Reply
+	
+	Tarun8:04 AM
+	Very useful options of vim. Thanks.
+	
+	Reply
+	
+	alevy10:11 AM
+	Thanks! very helpful!
+	
+	Reply
+	
+	Wellington Torrejais da Silva9:05 AM
+	Thanks!!
+	
+	Reply
+	
+	Karun7:10 AM
+	Thanks
+	
+	Reply
+	
+	Sylvain Pypebros2:29 AM
+	CTRL-w = will rebalance windows width after you resized your terminal.
+	
+	Reply`]
+
