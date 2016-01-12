@@ -8,6 +8,16 @@ else
 	let g:iswindows=0
 endif
 
+if ! has("gui_running")
+	set t_Co=256
+endif
+if &diff
+	" feel free to choose :set background=light for a different style 
+	" set background=dark 
+	colors peaksea
+endif
+
+
 """"""""""""""""""""""""""""""""""""""""""""
 "                  Vundle                  
 """"""""""""""""""""""""""""""""""""""""""""
