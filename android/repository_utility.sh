@@ -174,7 +174,7 @@ cbuild_setupenv()
 	[ $? -ne 0 ] && return
 
 	. build/envsetup.sh
-	project_num=`print_lunch_menu | grep hevc_v2 | cut -d '.' -f 1 | tr -d ' '`
+		project_num=`print_lunch_menu | grep $project | cut -d '.' -f 1 | tr -d ' '`
 	if [ $? -ne 0 ]; then
 		echo "project [$project] is invalid! please check what happend!"
 		return
