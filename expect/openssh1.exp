@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+# SSH自动登录脚本
+set timeout -1
+spawn ssh -l chum 192.168.1.126
+expect "password:"
+send "chumojing\r"    # 密码
+interact #控制权移交
+

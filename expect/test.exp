@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+set ip itl-bsp
+set password chumojing
+set timeout 10
+spawn ssh chum@$ip
+expect {
+"*yes/no" { send "yes\r"; exp_continue}
+"*password:" { send "$password\r" }
+}
+expect "#*"
+send "pwd\r"
+send  "exit\r"
+expect eof
+
