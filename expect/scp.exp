@@ -1,5 +1,6 @@
 #!/usr/bin/expect
-set timeout 10
+#set timeout -1  含义为： 超时时间无穷大  解决了scp传输大文件时，超时退出导致文件传输不完整问题
+set timeout -1
 set host [lindex $argv 0]
 set username [lindex $argv 1]
 set password [lindex $argv 2]
