@@ -5,7 +5,7 @@ A83_REPOSITORY_TOP_DIR="/home/itl/work/A83T"
 
 project_array=("hmt" "hmt_v3" "hevc" "hevc_v2" "cpe" "ist")
 
-project=${project_array[1]}
+android_project=${project_array[1]}
 platform_a83=A83
 platform_a80=A80
 platform=$platform_a83
@@ -16,15 +16,15 @@ alias ca83='cd $A83_REPOSITORY_TOP_DIR/'
 
 project_reassign()
 {
-	#case $project in
+	#case $android_project in
 	#	$project_hmt)
 	#		sysconfig_project_dir=hmt
 	#		;;
 	#	*)
-	#		sysconfig_project_dir=$project
+	#		sysconfig_project_dir=$android_project
 	#		;;
 	#esac
-	sysconfig_project_dir=$project
+	sysconfig_project_dir=$android_project
 }
 
 project_reassign
@@ -33,8 +33,8 @@ project_select()
 {
 	select value in ${project_array[*]}; do 
 	if [ $value  ]; then 
-		project=${value}
-		echo "project = $project" 
+		android_project=${value}
+		echo "android_project = $android_project" 
 		break   
 	else 
 		echo "Invaild selection" 
@@ -43,9 +43,9 @@ project_select()
 	project_reassign
 
 	if [ $platform = $platform_a83 ]; then
-		repository_top_dir=$A80_REPOSITORY_TOP_DIR/$project
+		repository_top_dir=$A80_REPOSITORY_TOP_DIR/$android_project
 	else
-		repository_top_dir=$A83_REPOSITORY_TOP_DIR/$project
+		repository_top_dir=$A83_REPOSITORY_TOP_DIR/$android_project
 	fi
 }
 
@@ -54,11 +54,16 @@ do_change_dir()
 	if [ $# -ne 1 ]; then
 		return
 	fi
-	if [ -z $project ]; then
-		echo "please run <project_select> select project first!"
+	if [ -z $android_project ]; then
+		echo "please run <project_select> select android_project first!"
 		return
 	fi
 	cd $repository_top_dir/$1
+}
+
+ctop()
+{
+	cd $repository_top_dir
 }
 
 clichee()
@@ -174,9 +179,10 @@ cbuild_setupenv()
 	[ $? -ne 0 ] && return
 
 	. build/envsetup.sh
-		project_num=`print_lunch_menu | grep $project | cut -d '.' -f 1 | tr -d ' '`
+	echo "android_project= $android_project"
+	project_num=`print_lunch_menu | grep $android_project | cut -d '.' -f 1 | tr -d ' '`
 	if [ $? -ne 0 ]; then
-		echo "project [$project] is invalid! please check what happend!"
+		echo "android_project [$android_project] is invalid! please check what happend!"
 		return
 	fi
 	echo "project_num = $project_num"
