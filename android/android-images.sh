@@ -13,11 +13,12 @@ project_ist=ist
 
 action_install="install"
 action_test="test"
+action_test_clr="test_clr"
 action_list="list"
 
 help(){
 	echo "Usage						  : $0 <action> <project>"
-	echo "Param action  : $action_install|$action_list|$action_test"
+	echo "Param action  : $action_install|$action_list|$action_test|$action_test_clr"
 	echo "Param project : $project_ist|$project_hmt|$project_hmt_v3|$project_hevc|$project_hevc_v2|$project_cpe"
 	exit 1
 }
@@ -37,7 +38,7 @@ if [ $# -ne 1 ] && [ $# -ne 2 ]; then
 fi
 
 case "$1" in
-	$action_install|$action_test)
+	$action_install|$action_test|$action_test_clr)
 		;;
 
 	$action_list)
@@ -58,9 +59,9 @@ esac
 do_image_install()
 {
 	project_name=$1
-	image_install_path=$2
-	if [ ! -d $image_install_path/$project_name ]; then
-		execute_cmd mkdir -p /$image_install_path/$project_name
+	image_install_path=$2/$project_name/A83T/firmware
+	if [ ! -d $image_install_path ]; then
+		execute_cmd mkdir -p /$image_install_path
 	fi
 
 	execute_cmd cd $image_path_prefix/$project_name/$image_path_suffix/
@@ -70,14 +71,22 @@ do_image_install()
 			install_image_name=`echo ${image_name} | cut -d '.' -f 1`
 			install_image_name_suffiex=`echo ${image_name} | cut -d '.' -f 2`
 			image_date=`stat ${image_name} | grep "最近更改"| sed -n "s/最近更改：\(.*\) \(.*\) \(.*\)/\1_\2/p"|tr -d '-'|tr -d ':' | cut -d '.' -f 1`
-			execute_cmd cp ${image_name} $image_install_path/${project_name}/${install_image_name}_${image_date}.${install_image_name_suffiex}
+			execute_cmd cp ${image_name} $image_install_path/${install_image_name}_${image_date}.${install_image_name_suffiex}
 
 
-			#execute_cmd cp ${image_name} $image_install_path/${project_name}/${install_image_name}_`date +"%Y%m%d_%H%M%S"`.${install_image_name_suffiex}
+			#execute_cmd cp ${image_name} $image_install_path/${install_image_name}_`date +"%Y%m%d_%H%M%S"`.${install_image_name_suffiex}
 		fi
 	done
 
 	#find ./ -iregex ".*sun8iw6p1_android_hmt_\(card0\|uart0\)\.img$" -print0 | xargs -0 -I {} cp {} /home/mount/Images-Android/hmt/
+}
+
+do_image_clear()
+{
+	project_name=$1
+	image_install_path=$2/$project_name/A83T/firmware
+	[ ! -d $image_install_path ] && execute_cmd mkdir -p /$image_install_path
+	execute_cmd rm -rf /$image_install_path/*
 }
 
 case "$2" in
@@ -89,6 +98,10 @@ case "$2" in
 
 			$action_test)
 				do_image_install $2 $image_test_path
+				;;
+
+			$action_test_clr)
+				do_image_clear $2 $image_test_path
 				;;
 
 			*)
