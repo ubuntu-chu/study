@@ -12,7 +12,9 @@ import sys
 import socket
 import struct
 
-version_server_addr = ("192.192.192.244", 30080) 
+version_server_addr = ("192.192.192.242", 30080) 
+#version_server_addr = ("192.192.192.240", 30080) 
+#version_server_addr = ("192.192.192.244", 30080) 
 udpsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
 version_packet = '''90 90'''
 
