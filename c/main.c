@@ -20,29 +20,34 @@ int main(int argc, char *argv[])
 	
 	unsigned char no = -1;
 	unsigned char a = 0, b =250, c = 0, len = 128;
+	unsigned char d=0, m = 5;
 
 
 
-	const char *name = "hello world\n";
+	const char *name = "hello world";
 	//const char name[] = "hello world\n";
 //	const char *name = "hello world\n";
     float f = 1.0;
 	time_t now_time;
 
+	//printf("name = %s\n", name);
+	printf("name = %1$s", name, 2);
 	c = a - b;
-	printf("a = 0x%x, b = 0x%x, c = %d 0x%x\n", a, b, c, c);
+	d = a - m;
+	//结论: 运算时均使用有符号数， 如果将负数赋值给unsigned char型变量， 则unsigned char型变量存放的是补码
+	printf("a = 0x%x, b = 0x%x, c = %d 0x%x, d = %d 0x%x\n", a, b, c, c, d, d);
 	printf("%d > %d = %s\n", c, len, (c > len)?("true"):"false");
+	printf("%d > %d = %s\n", d, len, (d > len)?("true"):"false");
 
     mymul((double *) &f);
 
 	snprintf(buf, sizeof(buf), "0x%2x", no); 
 	printf(buf);
 	printf("\n");
- //   mymul_float(&f);
+   //mymul_float(&f);
+   mymul(&f);
     //printf("now f = %f\n", f);
     printf("now f = %f\n", f);
-//	printf("name = %1$s", name);
-	printf("name = %1$s\n", name);
 
 	now_time		= time(NULL);
 	printf("utc sec = %ld; sizeof(time_t) = %d\n", now_time, sizeof(time_t));
