@@ -22,6 +22,11 @@ int main(int argc, char *argv[])
 	unsigned char a = 0, b =250, c = 0, len = 128;
 	unsigned char d=0, m = 5;
 
+	unsigned char aa=0, bb=255, cc=0;
+	unsigned int aaa=1, bbb=-2, ccc=0;
+
+
+
 
 
 	const char *name = "hello world";
@@ -30,6 +35,11 @@ int main(int argc, char *argv[])
     float f = 1.0;
 	time_t now_time;
 
+	cc = aa-bb;
+	printf("cc = %d\n", cc);
+
+	ccc = aaa-bbb;
+	printf("ccc = %d\n", ccc);
 	//printf("name = %s\n", name);
 	printf("name = %1$s", name, 2);
 	c = a - b;
