@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SERVICEDIR=/home/barnard/test
 
