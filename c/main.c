@@ -22,7 +22,8 @@ int main(int argc, char *argv[])
 	unsigned char a = 0, b =250, c = 0, len = 128;
 	unsigned char d=0, m = 5;
 
-	unsigned char aa=0, bb=255, cc=0;
+	//unsigned char aa=0, bb=255, cc=0;
+	unsigned char aa=0, bb=1, cc=0;
 	unsigned int aaa=1, bbb=-2, ccc=0;
 
 
