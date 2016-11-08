@@ -1,0 +1,810 @@
+if has("syntax")
+  syntax on
+endif
+
+if(has("win32") || has("win95") || has("win64") || has("win16")) "判定当前操作系统类型
+    let g:iswindows=1
+else
+	let g:iswindows=0
+endif
+
+if ! has("gui_running")
+	set t_Co=256
+endif
+if &diff
+	" feel free to choose :set background=light for a different style 
+	" set background=dark 
+	colors peaksea
+endif
+
+let mapleader=","
+
+""""""""""""""""""""""""""""""""""""""""""""
+"                  Vundle                  
+""""""""""""""""""""""""""""""""""""""""""""
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" BundleInstall"
+
+set nocompatible                " be iMproved
+filetype off                    " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+"my Bundle here:
+"
+" original repos on github
+"Bundle 'kien/ctrlp.vim'
+"Bundle 'sukima/xmledit'
+"Bundle 'sjl/gundo.vim'
+"窗口管理
+Bundle 'vim-scripts/winmanager'                 
+"buffer管理
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'vim-scripts/c.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'vim-scripts/tComment'
+Bundle 'vim-scripts/Tagbar'
+"git支持
+Bundle 'Xuyuanp/nerdtree-git-plugin'   
+Bundle 'tpope/vim-fugitive'   
+"暂时未用
+Bundle 'exvim/main'                    
+"Bundle 'klen/python-mode'
+Bundle 'Valloric/ListToggle'
+"Bundle 'SirVer/ultisnips'
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+"Bundle 't9md/vim-quickhl'
+Bundle 'Lokaltog/vim-powerline'
+"Bundle 'scrooloose/nerdcommenter'
+
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tomasr/molokai'
+"可浏览buffer   快捷键 <Leader>be  - Opens BufExplorer
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'zhisheng/visualmark.vim'
+Bundle 'ervandew/supertab'
+Bundle 'vimplugin/project.vim'
+
+
+"..................................
+" vim-scripts repos
+"Bundle 'YankRing.vim'
+"Bundle 'vcscommand.vim'
+Bundle 'ShowPairs'
+Bundle 'SudoEdit.vim'
+Bundle 'EasyGrep'
+Bundle 'VOoM'
+"Bundle 'ZoomWin'
+"Bundle 'VimIM'
+"Bundle 'project.vim'
+Bundle 'taglist.vim'
+Bundle 'a.vim'
+Bundle 'easymotion/vim-easymotion'
+"Bundle 'Valloric/YouCompleteMe'
+
+"..................................
+" non github repos
+" Bundle 'git://git.wincent.com/command-t.git'
+"......................................
+filetype plugin indent on
+
+"
+"" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" 
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+""""""""""""""""""""""""""""""Ace""""""""""""""""""""""""""""""""""""
+" 一般设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"runtime! debian.vim
+"
+"颜色
+"colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+" 设定默认解码
+set enc=utf-8
+set fenc=utf-8
+set fencs=utf-8,gbk,gb2312,gb18030,cp936,usc-bom,euc-jp
+
+" 不要使用vi的键盘模式，而是vim自己的
+set nocompatible
+
+" history文件中需要记录的行数
+set history=600
+
+" 在处理未保存或只读文件的时候，弹出确认
+set confirm
+
+" 与windows共享剪贴板
+set clipboard+=unnamed
+
+" 侦测文件类型
+filetype on
+
+" 载入文件类型插件
+filetype plugin on
+
+" 为特定文件类型载入相关缩进文件
+filetype indent on
+
+" 保存全局变量
+set viminfo+=!
+
+" 带有如下符号的单词不要被换行分割
+set iskeyword+=_,$,@,%,#,-
+
+" 语法高亮
+syntax on
+
+" 显示行号(下面有自动侦测文件类型显示)
+set nu
+
+" 高亮字符，让其不受100列限制
+:highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
+:match OverLength '\%101v.*'
+
+" 默认窗口分割方向
+"set splitbelow
+set splitright
+
+" 显示匹配
+set showmatch
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 文件设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 不要备份文件（根据自己需要取舍）
+"set nobackup
+
+" 不要生成swap文件，当buffer被丢弃的时候隐藏它
+setlocal noswapfile
+set bufhidden=hide
+
+" 字符间插入的像素行数目
+set linespace=0
+
+" 增强模式中的命令行自动完成操作
+set wildmenu
+
+" 在状态行上显示光标所在位置的行号和列号
+set ruler
+set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set cmdheight=2
+
+" 使回格键（backspace）正常处理indent, eol, start等
+set backspace=2
+
+" 允许backspace和光标键跨越行边界
+set whichwrap+=<,>,h,l
+
+" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
+
+" 启动的时候不显示那个援助索马里儿童的提示
+"set shortmess=atI
+
+" 通过使用: commands命令，告诉我们文件的哪一行被改变过
+set report=0
+
+" 不让vim发出讨厌的滴滴声
+set noerrorbells
+
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 搜索和匹配
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 高亮显示匹配的括号
+set showmatch
+
+" 匹配括号高亮的时间（单位是十分之一秒）
+set matchtime=1
+
+" 在搜索的时候忽略大小写
+set ignorecase
+
+" 不要高亮被搜索的句子（phrases）
+" set nohlsearch
+
+" 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索）
+set incsearch
+
+" 光标移动到buffer的顶部和底部时保持3行距离
+set scrolloff=3
+
+" 不要闪烁
+set novisualbell
+
+" 我的状态行显示的内容（包括文件类型和解码）
+set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+
+" 总是显示状态行
+set laststatus=2
+
+set cursorline
+set hlsearch            "收索的结果高亮
+
+"autoindent 就是自动缩进的意思，当你在输入状态用回车键插入一个新行，
+"或者在 normal 状态用 o 或者 O 插入一个新行时，autoindent 会自动地将当前行的缩进拷贝到新行，
+"也就是"自动对齐”，当然了，如果你在新行没有输入任何字符，那么这个缩进将自动删除。
+
+"cindent 就不同了，它会按照 C 语言的语法，自动地调整缩进的长度，
+"比如，当你输入了半条语句然后回车时，缩进会自动增加一个 TABSTOP 值，
+"当你键入了一个右花括号时，会自动减少一个 TABSTOP 值。
+"set cindent             "自动缩进相关设置选项
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+"set autoindent
+set nocompatible "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
+set backspace=indent,eol,start whichwrap+=<,>,[,] "允许退格键的使用
+"Turn on WiLd menu
+set wildmenu
+"Always show current position
+"set rule
+""Bbackspace and cursor keys wrap to
+set whichwrap+=<,>,h,l
+"Set magic on
+set magic
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 文本格式和排版
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 自动格式化
+set formatoptions=tcrqn
+
+" 继承前一行的缩进方式，特别适用于多行注释
+set autoindent
+
+" 为C程序提供自动缩进
+set smartindent
+
+" 使用C样式的缩进
+set cindent
+
+" 制表符为4
+set tabstop=4
+
+" 统一缩进为4
+set softtabstop=4
+set shiftwidth=4
+
+" 不要用空格代替制表符
+set noexpandtab
+
+" 不要换行
+set nowrap
+
+" 在行和段开始处使用制表符
+set smarttab
+
+" 显示Tab和结尾
+"set list
+"set listchars=tab:>.,trail:.,extends:#,nbsp:.
+"set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
+
+" vim自身设置，不显示预览窗口
+set completeopt=menuone 
+
+" 用空格键来开关折叠
+set foldenable
+set foldmethod=manual
+nnoremap  @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') 
+ "--状态行设置--
+set laststatus=2 " "总显示最后一个窗口的状态行；设为1则窗口数多于一个的时候显示最后一个窗口的状态行；0不显示最后一个窗口的状态行
+ set ruler          "标尺，用于显示光标位置的行号和列号，逗号分隔。每个窗口都有自己的标尺。如果窗口有状态行，标尺在那里显示。否则，它显示在屏幕的最后一行上。
+ "
+ ""--命令行设置--
+ set showcmd            " 命令行显示输入的命令
+ set showmode        " 命令行显示vim当前模式
+ " 设置当文件被改动时自动载入
+ set autoread
+ " 显示行号
+ set number
+"自动保存
+set autowrite
+
+""""""""""""""""""""""""""" 
+"  自动补全功能设置
+""""""""""""""""""""""""""" 
+filetype plugin indent on
+set completeopt=longest,menu
+let g:SuperTabRetainCompletionType=2
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+""""""""""""""""""""""""""" 
+"  代码折叠方式设置 
+""""""""""""""""""""""""""" 
+set foldmethod=marker
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocommands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 只在下列文件类型被侦测到的时候显示行号，普通文本文件不显示
+"if has("autocmd") 
+"	autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+"	autocmd FileType xml,html,css,js,javascript,c,cs,java,perl,shell,bash,cpp,python,vim,php,ruby,markdown,sh,md set number
+"	autocmd FileType xml,html vmap <C-o> <ESC>'<i<!--<ESC>o<ESC>'>o-->
+"	autocmd FileType java,c,cpp,cs vmap <C-o> <ESC>'<o
+"	autocmd FileType html,text,php,vim,c,java,xml,bash,shell,perl,python setlocal textwidth=100
+"	"autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+"	"autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+"
+"	" JavaScript 语法高亮
+"	au FileType html,javascript let g:javascript_enable_domhtmlcss = 1
+"	au BufRead,BufNewFile *.js setf jquery
+"	
+"	autocmd BufReadPost *
+"	\ if line("'\"") > 0 && line("'\"") <= line("$") |
+"		\ exe " normal g`\"" |
+"	\ endif
+"endif "has("autocmd")"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 键映射
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""" 
+"  easygrep插件设置 在vim中实现类似grep的搜索功能
+"  搜索功能强大
+""""""""""""""""""""""""""" 
+
+"let g:EasyGrepMode = 2     " All:0, Open Buffers:1, TrackExt:2, 
+let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
+let g:EasyGrepRecursive  = 1 " Recursive searching
+let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
+let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, ctag.*"
+"nnoremap <silent> <F3> :Grep<CR>
+
+""""""""""""""""""""""""""" 
+"  源文件 头文件切换插件 setting  a.vim
+""""""""""""""""""""""""""" 
+":A	在新Buffer中切换到c/h文件
+":AS		横向分割窗口并打开c/h文件
+":AV		纵向分割窗口并打开c/h文件
+":AT		新建一个标签页并打开c/h文件
+nnoremap <silent> <F1> :A<CR>
+
+""""""""""""""""""""""""""" 
+"  minibuffer  setting   minibuffer.vim
+""""""""""""""""""""""""""" 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+
+"map bn :bn<cr>
+"map bp :bp<cr>
+
+"file buffer explore p=print
+nmap <leader>po :Project<cr>
+nmap <leader>cw :cw<cr>
+nmap <leader>cn :cn<cr>
+nmap <leader>cp :cp<cr>
+nmap <leader>cc :cclose<cr>
+nmap <leader>co :copen<cr>
+
+"header c file switch
+"note:如果使用了hjkl打头的快捷键 则在光标移动时 速度会受到影响 响应变慢
+"其他建也是如此 如果要使用快捷键 建议以不常用的键打头
+"map hc :A<CR>
+"autocmd FileType c,cpp  map <buffer> <leader><space> :w<cr>:make<cr>
+
+"nmap <leader>cl :cl<cr>
+"nmap <leader>cn :cn<cr>
+"nmap <leader>cp :cp<cr>
+"使用此方式 在打开Taglist窗口时 quickfix窗口会自动显示在taglist窗口下面 很明显
+"nmap <leader>cw :cw 10<cr> 
+"映射后可以  不得需要按下F9键
+"nmap <F9> :TlistClose<cr>:cw 10<cr>:TlistOpen<cr><C-w>h<ESC>
+"此种方式不可以 原因未知
+"nmap <leader>cw :TlistClose<cr>:cw 10<cr>:TlistOpen<cr><C-w>h<ESC>
+
+
+""""""""""""""""""""""""""" 
+"  cscope  setting
+""""""""""""""""""""""""""" 
+if has("cscope") 
+	set csprg=/usr/bin/cscope 
+	set csto=0 
+	set cst 
+	set nocsverb 
+	set csverb 
+	set cscopetag 
+	set cscopequickfix=s-,g-,c-,d-,t-,e-,f-,i- 
+endif
+
+""""""""""""""""""""""""""" 
+"  Use mouse on console 
+""""""""""""""""""""""""""" 
+if has("wildmenu") 
+	set mouse =a 
+endif 
+" Set text-mode menu 
+if has("wildmenu") 
+" Use menu 
+	source $VIMRUNTIME/menu.vim 
+	set cpoptions-=< 
+	set wildcharm=<C-Z> 
+"	map <F4> :emenu <C-Z> 
+endif 
+
+"""""""""""""""""""""""""""""" 
+" Tag list (ctags)  由 tagbar替代
+"""""""""""""""""""""""""""""" 
+"nnoremap <silent> <F8> :TlistToggle<CR> 
+"map tt :TlistToggle<CR>
+let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
+let Tlist_Show_One_File = 1 
+let Tlist_Exit_OnlyWindow = 1 
+let Tlist_Use_Left_Window = 0 
+let Tlist_Sort_Type = 'name' 
+let Tlist_Auto_Open = 0 
+let Tlist_Auto_Update = 1 
+let Tlist_WinWidth = 25 
+let Tlist_Use_Right_Window= 1 
+let Tlist_File_Fold_Auto_Close=1 
+if $VIM_HATE_SPACE_ERRORS != '0' 
+"	let c_space_errors=1 
+endif 
+"" 按下F10重新生成tag文件，并更新taglist
+"add new tags file(由ctags生成tags的路径，在ctags -R 生成tags文件后，不要将tags移动到别的目录，否则ctrl+］时，会提示找不到源码文件)
+"map <F10> :!ctags -R --exclude bin --exclude *.o --exclude .git --exclude .gitignore --exclude .ctags_cscope --c++-kinds=+p --fields=+ialS --extra=+q .<CR><CR>:!mv tags .ctags_cscope<CR><CR> :TlistUpdate<CR>
+"map <F10> :!ctags -R --exclude bin --exclude *.o --exclude .git --exclude .gitignore --exclude .ctags_cscope --c++-kinds=+p --fields=+ialS --extra=+q .<CR><CR> :TlistUpdate<CR>
+"imap 表示在插入模式下也可以映射、使用
+"imap <F10> <ESC>:!ctags -R --exclude bin --exclude *.o --exclude .git --exclude .gitignore --exclude .ctags_cscope --c++-kinds=+p --fields=+ialS --extra=+q .<CR><CR> :TlistUpdate<CR>
+if filereadable("tags")
+	set tags=tags
+	if filereadable("./.ctags_cscope/usr_include/tags")
+		set tags+=./.ctags_cscope/usr_include/tags
+	endif
+endif
+
+"""""""""""""""""""""""""""""""" 
+" Window manager settings 
+"""""""""""""""""""""""""""""""" 
+"nmap wm :WMToggle<CR> 
+""注释：不使用wm的原因在于会使w的响应速度变慢 
+"map <c-w><c-f> :FirstExplorerWindow<cr> 
+"map <c-w><c-b> :BottomExplorerWindow<cr> 
+"let persistentBehaviour=0 
+"let winManagerWidth=25 
+"let g:winManagerWindowLayout='NERDTree|Tagbar'
+""let g:winManagerWindowLayout='Tagbar'
+"let g:AutoOpenWinManager = 0
+
+
+
+"let g:ycm_min_num_of_chars_for_completion = 1
+"let g:ycm_complete_in_comments = 1
+"let g:ycm_complete_in_strings = 1
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_seed_identifiers_with_syntax=1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"
+"
+"let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_prev_key='<C-p>'
+"let g:multi_cursor_next_key='<C-n>'
+"let g:multi_cursor_skip_key='<C-o>'
+"let g:multi_cursor_quit_key='<Esc>'
+"
+
+
+"let g:NERDTree_title = "[NERDTree]"
+"function! NERDTree_Start()
+"	exe 'q'
+"	exe 'NERDTree'
+"endfunction
+"
+"function! NERDTree_IsValid()
+"	return 1
+"endfunction
+"
+"noremap <f5> :NERDTreeFind<cr>
+"
+"let g:Tagbar_title = "[Tagbar]"
+"function! Tagbar_Start()
+"	exe 'q'
+"	exe 'TagbarOpen'
+"endfunction
+"
+"function! Tagbar_IsValid()
+"	return 1
+"endfunction
+"
+
+"CtrlP (ctrl + p)打开后，就可以使用以下的命令
+"
+"<F5> 清除当前目录下的缓存，获取新的结构
+"<c-f>和<c-b> 在各个模式下转换
+"<c-d> 使用文件名搜索代替全路径搜索
+"<c-r> 使用正则模式
+"<c-j>和<c-k> 上下选择文件
+"<c-t> <c-v>和<c-x> 在新的tab或者新的分割窗口打开选择的文件
+"<c-n>和<c-p> 找到之前或者之后查找的字符串
+"<c-y> 创建一个新的文件
+"<c-z> 标记或者取消标记多个文件然后使用<c-o>打开它们
+"
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"let g:ctrlp_use_caching = 0
+"let g:ctrlp_map = '<leader>p'
+"nnoremap <Leader>pr :CtrlPMRU<Cr>
+"nnoremap <Leader>pm :CtrlPMixed<Cr>
+"nnoremap <Leader>pb :CtrlPBuffer<Cr>
+"let g:ctrlp_custom_ignore = { 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|images)$', 'file': '\v\.(exe|so|dll)$' }
+"
+"nnoremap <Leader>fu :CtrlPFunky<Cr>
+""nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+""let g:ctrlp_funky_matchtype = 'path'
+"let g:ctrlp_funky_syntax_highlight = 1
+"let g:ctrlp_extensions = ['funky']
+"
+"nnoremap <Leader>sf :CtrlSF<space>
+"let g:ctrlsf_default_root = 'project'
+"let g:ctrlsf_mapping = { "next": "n", "prev": "N", }
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_winsize = '100'
+
+
+nmap <Leader>tb :TagbarToggle<CR>
+map <F8> :TagbarToggle<CR>
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_width=20
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#ToggleWindow()
+""let g:tagbar_vertical = 30
+let g:tagbar_expand = 1
+let g:tagbar_foldlevel = 2
+let g:tagbar_autoshowtag = 1
+
+
+nmap <Leader>c <Plug>MarkAllClear
+
+"tpope/vim-fugitive 插件
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gc :Gcommit -m""
+nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gl :Glog
+nnoremap <Leader>gp :Gpush<cr>
+nnoremap <Leader>gpp :Gpull<cr>
+
+nnoremap <F4> :UndotreeToggle<cr>
+if !exists('g:undotree_WindowLayout')
+	let g:undotree_WindowLayout = 3
+endif
+
+"修改了配置文件以后，通过输入空格+w来调出easymotion
+"<Space> w 光标之后查找单词
+"<Space> b 光标之前查找单词
+let g:EasyMotion_leader_key='<Space>'
+
+" 光标所在行高亮颜色定义
+hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkred  ctermfg=white guibg=darkred guifg=white 
+"可以把darkred，white等换成你喜欢的颜色。其中guibg和guifg修改的是下划线的颜色；
+"ctermbg和ctermfg修改的是背景的颜色，可以删去，仅保留下划线。
+
+
+"visualmark.vim 插件
+nmap <leader>mm <Plug>Vm_toggle_sign
+map <unique> <F2> <Plug>Vm_goto_next_sign
+nmap <leader>mn <Plug>Vm_goto_next_sign
+nmap <leader>mp <Plug>Vm_goto_prev_sign
+
+""""""""""""""""""""""""""""""""""""""""""
+"             MiniBufExplorer             
+""""""""""""""""""""""""""""""""""""""""""
+"<C-Tab>	向前循环切换到每个buffer上,并在但前窗口打开
+"<C-S-Tab>	向后循环切换到每个buffer上,并在但前窗口打开
+let g:miniBufExplMapCTabSwitchBufs = 1
+
+"用<C-箭头键>切换到上下左右窗口中去
+let g:miniBufExplMapWindowNavArrows = 1
+
+"则可以用<C-h,j,k,l>切换到上下左右的窗口中去,就像:
+"C-w,h j k l    向"左,下,上,右"切换窗口.
+"let g:miniBufExplMapWindowNavVim = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""
+"                 NerdTree                 
+"""""""""""""""""""""""""""""""""""""""""""
+"设置F9为开启快捷方式
+map <F9> :NERDTreeToggle<CR>
+" 关闭NERDTree快捷键
+map <leader>nt :NERDTreeToggle<CR>
+" 显示行号
+let NERDTreeShowLineNumbers=0
+let NERDTreeAutoCenter=1
+"是否显示隐藏文件
+let NERDTreeShowHidden=1
+"设置宽度
+let NERDTreeWinSize=20
+"在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+"忽略一下文件的显示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+"显示书签列表
+let NERDTreeShowBookmarks=1"
+"关闭文件后只剩NerdTree的时候也一并关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+""""""""""""""""""""""""""""""""""""""""""
+"              Clang_Complete             
+""""""""""""""""""""""""""""""""""""""""""
+let g:clang_complete_copen = 1
+let g:clang_periodic_quickfix = 1
+let g:clang_snippets = 1
+let g:clang_close_preview = 1
+let g:clang_use_library = 1
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+"let g:clang_user_options = '|| exit 0'
+
+"""""""""""""""""""""""""""""""""""""""""""
+"               ycm                  
+"""""""""""""""""""""""""""""""""""""""""""
+"设置error和warning的提示符，如果没有设置，ycm会以syntastic的  
+" g:syntastic_warning_symbol 和 g:syntastic_error_symbol 这两个为准  
+"let g:ycm_error_symbol='>#'  
+"let g:ycm_warning_symbol='>*'"
+"
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
+
+"设置跳转的快捷键，可以跳转到definition和declaration  
+"nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>  
+"nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>  
+"nnoremap <leader>gm :YcmCompleter GoToDefinitionElseDeclaration<CR>  
+"nmap <F4> :YcmDiags<CR>  "
+"设置全局配置文件的路径  
+let g:ycm_global_ycm_extra_conf ='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'  
+""开启基于tag的补全，可以在这之后添加需要的标签路径  
+let g:ycm_collect_identifiers_from_tags_files = 1  
+"开启语义补全  
+let g:ycm_seed_identifiers_with_syntax = 1  
+""在接受补全后不分裂出一个窗口显示接受的项  
+set completeopt-=preview  
+"不显示开启vim时检查ycm_extra_conf文件的信息  
+let g:ycm_confirm_extra_conf=0  
+""每次重新生成匹配项，禁止缓存匹配项  
+let g:ycm_cache_omnifunc=0  
+"在注释中也可以补全  
+let g:ycm_complete_in_comments=1  
+""输入第一个字符就开始补全  
+let g:ycm_min_num_of_chars_for_completion=1  
+"不查询ultisnips提供的代码模板补全，如果需要，设置成1即可  
+let g:ycm_use_ultisnips_completer=0  
+let g:ycm_path_to_python_interpreter='/usr/bin/python'
+
+"""""""""""""""""""""""""""""""""""""""""""
+"               Syntastic                  
+"""""""""""""""""""""""""""""""""""""""""""
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '⚠'
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_loc_list_height = 5
+"let g:syntastic_python_checkers=['flake8']
+"let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+""phpcs，tab 4个空格，编码参考使用CodeIgniter风格
+"let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+
+"""""""""""""""""""""""""""""""""""""""""""
+"               EasyTags                   
+"""""""""""""""""""""""""""""""""""""""""""
+" 给每个目录单独建tag文件
+set tags=./.tags;,~/.vim/tags
+autocmd FileType php :set tags+=~/.vim/tags/php
+let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:easytags_file = '~/.vim/tags/tags'
+"let g:easytags_dynamic_files = 1
+
+nnoremap <leader>ut :UpdateTags!<CR>
+nnoremap <leader>ht :HighlightTags<CR>
+nnoremap <silent><leader>hh :let b:easytags_auto_highlight = 1<CR>
+nnoremap <silent><leader>nh :let b:easytags_auto_highlight = 0<CR>
+
+let g:easytags_resolve_links = 1
+" 分语言并汇总
+"let g:easytags_by_filetype = '~/.vim/tags'
+" 递归遍历目录 - vim会停滞不动
+"let g:easytags_autorecurse = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""
+"               FSwitch                  
+"""""""""""""""""""""""""""""""""""""""""
+" A "companion" file is a .cpp file to an .h file and vice versa
+
+" Opens the companion file in the current window
+nnoremap <Leader>sh :FSHere<cr>
+" Opens the companion file in the window to the left (window needs to exist)
+" This is actually a duplicate of the :FSLeft command which for some reason
+" doesn't work.
+nnoremap <Leader>sl :call FSwitch('%', 'wincmd l')<cr>
+" Same as above, only opens it in window to the right
+nnoremap <Leader>sr :call FSwitch('%', 'wincmd r')<cr>
+" Creates a new window on the left and opens the companion file in it
+nnoremap <Leader>sv :FSSplitLeft<cr>
+
+
+" ctrl + / 不能映射为vim快捷键
+"imap <C-/> <Esc>:gcc<CR>i
+"nmap // gcc
+
+
+" powerline 设置
+"powerline{
+set guifont=PowerlineSymbols\ for\ Powerline
+set nocompatible
+set t_Co=256
+let g:Powerline_symbols='fancy'
+set laststatus=2
+"}
+"
+let g:ycm_confirm_extra_conf=0
+
+"
+" vim多窗口使用技巧
+"
+"1、打开多个窗口
+"打开多个窗口的命令以下几个：
+"横向切割窗口
+":new+窗口名(保存后就是文件名) 
+":split+窗口名，也可以简写为:sp+窗口名
+"纵向切割窗口名
+":vsplit+窗口名，也可以简写为：vsp+窗口名
+"2、关闭多窗口
+"可以用：q!，也可以使用：close，最后一个窗口不能使用close关闭。使用close只是暂时关闭窗口，其内容还在缓存中，只有使用q!、w!或x才能真能退出。
+":tabc 关闭当前窗口
+":tabo 关闭所有窗口
+"3、窗口切换
+":ctrl+w+j/k，通过j/k可以上下切换，或者:ctrl+w加上下左右键，还可以通过快速双击ctrl+w依次切换窗口。
+"4、窗口大小调整
+"纵向调整
+":ctrl+w + 纵向扩大（行数增加）
+":ctrl+w - 纵向缩小 （行数减少）
+":res(ize) num  例如：:res 5，显示行数调整为5行
+":res(ize)+num 把当前窗口高度增加num行
+":res(ize)-num 把当前窗口高度减少num行
+"横向调整
+":vertical res(ize) num 指定当前窗口为num列
+":vertical res(ize)+num 把当前窗口增加num列
+":vertical res(ize)-num 把当前窗口减少num列
+"5、给窗口重命名
+":f file
+"6、vi打开多文件
+"vi a b c
+":n 跳至下一个文件，也可以直接指定要跳的文件，如:n c，可以直接跳到c文件
+":e# 回到刚才编辑的文件
+"7、文件浏览
+":Ex 开启目录浏览器，可以浏览当前目录下的所有文件，并可以选择
+":Sex 水平分割当前窗口，并在一个窗口中开启目录浏览器
+":ls 显示当前buffer情况
+"8、vi与shell切换
+":shell 可以在不关闭vi的情况下切换到shell命令行
+":exit 从shell回到vi
+
