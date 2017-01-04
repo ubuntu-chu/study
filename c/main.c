@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <time.h>
 
+struct aa{
+	int a;
+	char b[0];
+};
 
 void mymul(double *p)
 {
@@ -36,6 +40,7 @@ int main(int argc, char *argv[])
     float f = 1.0;
 	time_t now_time;
 
+	printf("sizeof(struct aa) = %d\n", sizeof(struct aa));
 	cc = aa-bb;
 	printf("cc = %d\n", cc);
 
