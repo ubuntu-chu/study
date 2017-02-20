@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 {
 	char buf[100];
 	
+	int ab[5][3];
 	unsigned char no = -1;
 	unsigned char a = 0, b =250, c = 0, len = 128;
 	unsigned char d=0, m = 5;
@@ -39,6 +40,37 @@ int main(int argc, char *argv[])
 //	const char *name = "hello world\n";
     float f = 1.0;
 	time_t now_time;
+	int i, j;
+	//int (*p)[3];
+	int *p;
+	int **pp;
+
+	int (*pac)[3];
+	int ac[3] = {1, 2, 3};
+	
+	pac = &ac;
+	p = ac;
+
+	printf("pac[0] = %d\n", pac[0][0]);
+
+	for (i = 0; i < sizeof(ab)/sizeof(ab[0]); i++){
+		for (j = 0; j < sizeof(ab[0])/sizeof(ab[0][0]); j++){
+			ab[i][j] = i+j;
+			//printf("ab[%d][%d] = %d\n", i, j, ab[i][j]);
+			//printf("ab[%d][%d] = %d\n", i, j, *(*(ab + i) + j));
+			printf("ab[%d][%d] = %d\n", i, j, *(ab[i] + j));
+		}
+	}
+	//printf("sizeof(ab[5][3]) = %d\n", sizeof(ab[5][3]));
+	printf("sizeof(ab) = %d\n", sizeof(ab));
+	printf("sizeof(ab[0]) = %d\n", sizeof(ab[0]));
+	
+	pp = &ab;
+	printf("pp[0][1] = %d\n", pp[0][1]);
+	//p = &ab[0];
+	p = ab[0];
+	printf("p[1] = %d\n", p[1]);
+	printf("ab[0] = %d\n", *ab[0]);
 
 	printf("sizeof(struct aa) = %d\n", sizeof(struct aa));
 	cc = aa-bb;
